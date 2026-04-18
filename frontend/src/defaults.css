@@ -1,17 +1,83 @@
+/* Ouro App - Professional Aesthetic (Charcoal & Royal Gold)
+   Designed for Pi Network Ecosystem
+*/
+
+:root {
+  --charcoal-bg: #121212;
+  --panel-bg: #1e1e1e;
+  --royal-gold: #D4AF37;
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F9E076 50%, #B8860B 100%);
+  --soft-gold: rgba(212, 175, 55, 0.1);
+  --text-main: #e0e0e0;
+}
+
 body {
-  font-family: sans-serif;
+  background-color: var(--charcoal-bg) !important;
+  color: var(--text-main) !important;
+  font-family: 'Cairo', sans-serif, Arial;
+  margin: 0;
+  padding: 0;
+  direction: rtl; /* يدعم الواجهة العربية */
 }
 
+/* التنسيق العلوي - Header */
+header, .app-header {
+  background-color: var(--panel-bg) !important;
+  border-bottom: 2px solid var(--royal-gold) !important;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* الشعار - Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+/* الروابط والأزرار */
+a {
+  color: var(--royal-gold) !important;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  text-shadow: 0 0 8px var(--royal-gold);
+}
+
+button, .btn-primary {
+  background: var(--gold-gradient) !important;
+  color: #000 !important;
+  border: none !important;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* الحاويات - Containers */
+.container, .card {
+  background-color: var(--panel-bg) !important;
+  border: 1px solid var(--soft-gold) !important;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+}
+
+/* نصوص العناوين */
 h1, h2, h3 {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
+  color: var(--royal-gold) !important;
+  border-right: 4px solid var(--royal-gold); /* لمسة جمالية للعناوين بالعربية */
+  padding-right: 10px;
 }
