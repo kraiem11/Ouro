@@ -3,44 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ouro - Golden Opportunities</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Ouro - بوابة الفرص الذهبية</title>
+    <link rel="stylesheet" href="../src/defaults.css">
 </head>
-<body>
-    <div class="app-container">
+<body style="background-color: #121212; color: #D4AF37; margin: 0; font-family: sans-serif;">
+    
+    <div id="app-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center;">
         <header>
-            <div class="logo">OURO</div>
-            <button id="connect-wallet" class="gold-btn">ربط المحفظة | Connect</button>
+            <div class="logo" style="font-size: 3rem; font-weight: bold; letter-spacing: 5px; margin-bottom: 10px;">OURO</div>
+            <p style="font-size: 1.2rem; opacity: 0.8;">بوابة الفرص الذهبية في شبكة باي</p>
         </header>
 
-        <section class="balance-card">
+        <section class="balance-card" style="margin-top: 30px; padding: 20px; border: 1px solid #D4AF37; border-radius: 15px; width: 80%;">
             <p>رصيدك الحالي | Your Balance</p>
-            <h2 id="pi-balance">0.00 π</h2>
+            <h2 id="pi-balance" style="font-size: 2.5rem;">0.00 π</h2>
         </section>
 
-        <main>
-            <h3>المهام الذهبية | Golden Tasks</h3>
-            <div class="task-list">
-                <div class="task-card">
-                    <h4>الترجمة الاحترافية</h4>
-                    <p>ترجمة مقال تقني (عربي/إنجليزي)</p>
-                    <span class="reward">Reward: 1.5 π</span>
-                    <button class="task-btn">ابدأ الآن</button>
-                </div>
-            </div>
-        </main>
+        <button id="connect-wallet" style="margin-top: 40px; background-color: #D4AF37; color: #121212; border: none; padding: 15px 40px; font-size: 1.1rem; font-weight: bold; border-radius: 30px; cursor: pointer;">
+            اتصال بمحفظة باي
+        </button>
 
-        <section class="subscription">
-            <div class="elite-card">
-                <h4>Ouro Elite Membership</h4>
-                <p>اشتراك شهري للوصول للمهام الكبرى</p>
-                <button id="subscribe-pirc2" class="gold-btn-outline">اشترك الآن (PiRC2)</button>
-            </div>
-        </section>
+        <div id="root"></div>
     </div>
-    
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    <script src="script.js"></script>
+
 </body>
 </html>
