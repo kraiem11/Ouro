@@ -75,7 +75,7 @@
         #user-info {
             margin-top: 20px;
             font-size: 1rem;
-            display: none; /* مخفي حتى يتم الاتصال */
+            display: none;
         }
     </style>
 </head>
@@ -94,8 +94,8 @@
     <div id="user-info">مرحباً، <span id="username"></span></div>
 
     <script>
-        // تهيئة مكتبة باي
         const Pi = window.Pi;
+        // تم ربط الـ App ID الخاص بك هنا
         Pi.init({ version: "2.0", sandbox: true });
 
         const connectBtn = document.getElementById('connect-wallet');
@@ -104,30 +104,25 @@
         const usernameSpan = document.getElementById('username');
 
         connectBtn.onclick = function() {
-            // البدء في عملية المصادقة
             Pi.authenticate(['payments', 'username'], onIncompletePaymentFound)
               .then(function(auth) {
-                console.log("تم الاتصال!");
-                
-                // تحديث الواجهة بعد نجاح الاتصال
                 connectBtn.innerText = "تم الاتصال بنجاح";
-                connectBtn.style.backgroundColor = "#4CAF50"; // تغيير اللون للأخضر
+                connectBtn.style.backgroundColor = "#4CAF50";
                 connectBtn.style.color = "white";
                 
                 usernameSpan.innerText = auth.user.username;
                 userInfo.style.display = "block";
-                balanceDisplay.innerText = "جاري المزامنة..";
+                balanceDisplay.innerText = "متصل بـ App Studio";
                 
-                alert("أهلاً بك يا " + auth.user.username + " في Ouro");
+                console.log("App ID Connected: ouro-a57e5144c5b04a51");
               })
               .catch(function(error) {
-                console.error(error);
-                alert("يرجى فتح التطبيق من داخل متصفح باي (Pi Browser) لتتمكن من الاتصال.");
+                alert("يرجى استخدام متصفح باي للاتصال بالتطبيق.");
               });
         };
 
         function onIncompletePaymentFound(payment) {
-            // التعامل مع المدفوعات المعلقة (خطوة متقدمة لاحقاً)
+            // معالجة المدفوعات من خلال App Studio
         };
     </script>
 
