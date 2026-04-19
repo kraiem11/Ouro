@@ -50,7 +50,7 @@
         }
 
         .balance-amount {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: bold;
         }
 
@@ -76,6 +76,7 @@
             margin-top: 20px;
             font-size: 1rem;
             display: none;
+            color: #4CAF50;
         }
     </style>
 </head>
@@ -91,11 +92,13 @@
 
     <button id="connect-wallet">اتصال بمحفظة باي</button>
     
-    <div id="user-info">مرحباً، <span id="username"></span></div>
+    <div id="user-info">تم ربط الحساب: <span id="username"></span></div>
 
     <script>
         const Pi = window.Pi;
-        // تم ربط الـ App ID الخاص بك هنا
+        // تعريف الـ App ID الخاص بك للربط مع App Studio
+        const MY_APP_ID = "ouro-a57e5144c5b04a51";
+
         Pi.init({ version: "2.0", sandbox: true });
 
         const connectBtn = document.getElementById('connect-wallet');
@@ -104,25 +107,30 @@
         const usernameSpan = document.getElementById('username');
 
         connectBtn.onclick = function() {
+            // طلب المصادقة وربطها بالـ App ID
             Pi.authenticate(['payments', 'username'], onIncompletePaymentFound)
               .then(function(auth) {
-                connectBtn.innerText = "تم الاتصال بنجاح";
+                console.log("تم الاتصال بالتطبيق: " + MY_APP_ID);
+                
+                // تحديث الواجهة
+                connectBtn.innerText = "متصل بـ Ouro";
                 connectBtn.style.backgroundColor = "#4CAF50";
                 connectBtn.style.color = "white";
                 
                 usernameSpan.innerText = auth.user.username;
                 userInfo.style.display = "block";
-                balanceDisplay.innerText = "متصل بـ App Studio";
+                balanceDisplay.innerText = "جاري المزامنة..";
                 
-                console.log("App ID Connected: ouro-a57e5144c5b04a51");
+                alert("مرحباً بك يا " + auth.user.username + " في بوابة Ouro الذهبية");
               })
               .catch(function(error) {
-                alert("يرجى استخدام متصفح باي للاتصال بالتطبيق.");
+                console.error(error);
+                alert("يرجى التأكد من فتح الرابط عبر متصفح باي (Pi Browser).");
               });
         };
 
         function onIncompletePaymentFound(payment) {
-            // معالجة المدفوعات من خلال App Studio
+            // التعامل مع المدفوعات المعلقة مستقبلاً
         };
     </script>
 
